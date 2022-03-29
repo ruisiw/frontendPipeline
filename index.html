@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!------------------------local CSS----------------------------->
+        <link rel="stylesheet" href="./assets/css/index.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!------------------------AWS SDK----------------------------->
+        <script src="./assets/js/index.js"></script>
+        <script src="https://sdk.amazonaws.com/js/aws-sdk-2.879.0.min.js"></script>
+        <!------------------------apiGateway----------------------------->
+        <script type="text/javascript" src="./assets/js/sdk/lib/axios/dist/axios.standalone.js"></script>
+        <script type="text/javascript" src="./assets/js/sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+        <script type="text/javascript" src="./assets/js/sdk/lib/CryptoJS/rollups/sha256.js"></script>
+        <script type="text/javascript" src="./assets/js/sdk/lib/CryptoJS/components/hmac.js"></script>
+        <script type="text/javascript" src="./assets/js/sdk/lib/CryptoJS/components/enc-base64.js"></script>        
+        <script type="text/javascript" src="./assets/js/sdk/lib/url-template/url-template.js"></script>
+        <script type="text/javascript" src="./assets/js/sdk/lib/apiGatewayCore/sigV4Client.js"></script>
+        <script type="text/javascript" src="./assets/js/sdk/lib/apiGatewayCore/apiGatewayClient.js"></script>
+        <script type="text/javascript" src="./assets/js/sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
+        <script type="text/javascript" src="./assets/js/sdk/lib/apiGatewayCore/utils.js"></script>
+        <script type="text/javascript" src="./assets/js/sdk/apigClient.js"></script>
+
+        <script>
+            var apigClient = apigClientFactory.newClient({
+                apiKey: 'FhKOxtAvDsa9Z5ssztu9d2paUeXOyZKZ5wpNG4t7',
+                invokeUrl:' https://u7974wp2hf.execute-api.us-east-1.amazonaws.com/photostest1'
+            });
+        </script>
+    </head>
+    <center>
+        <header class="header">
+            <h1>Photo Album</h1>
+        </header>
+    </center>
+    <body style="background-color:LightSkyBlue;">
+
+        <div class="container">
+            <center>
+                <h2><font face = "Times New Roman", size = "5">Option 1: Press the mic and speak</font></h2>
+                
+                <!-- <form action="", method="get", target="", id="search_photos">
+                    <input name="search_query" id = "search_query" type="text" placeholder="Search for photos" autocomplete="off"autofocus>
+                    <button type="button">
+                        <i class="large material-icons" id="mic_search" onclick="Search()">mic</i>
+                    </button>
+                </form> -->
+
+                <div class="bar">
+                    <input id="searchbar" class="searchbar" type="text">
+                    <a href="#" onclick="speechToText()"> <img class="voice" src="https://cdn4.vectorstock.com/i/1000x1000/51/03/microphone-icon-in-modern-design-style-for-web-vector-26505103.jpg" width = 50px height = 50px></a>
+                </div>
+
+                <div class="row">
+                    <button type="button" id="searchPhotos" name="searchPhotos" style="width:100px; height: 25px;" onclick="textSearch()">Search</button>
+                </div>
+            </center>
+        </div>
+        <div class="row">
+            <div id="photos_search_results">
+            </div>
+        </div>
+        <div class="Upload_files">
+             <center>
+            <h3> <font face = "Times New Roman", size = "5">Option 2: Upload Photos from local device </font></h3>
+                <form action="/action_page.php">
+                    <input type="file" id="uploaded_file" name="filename">
+                    <input type="text" id="custom_labels" name="custom_labels" placeholder="Custom labels">
+                </form>
+                <button id="upload_files" onclick="uploadPhoto()" style="height:25px;width:100px">Upload</button>
+            </center>
+        </div>
+    </body>
+</html>
